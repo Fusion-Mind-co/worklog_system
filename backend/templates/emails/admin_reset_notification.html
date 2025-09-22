@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パスワードリセット依頼のお知らせ</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1e40af;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #1e40af;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #6b7280;
+        }
+        .info {
+            background-color: #eff6ff;
+            border-left: 4px solid #1e40af;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .alert {
+            background-color: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>社内業務ツール</h1>
+        <p>管理者通知</p>
+    </div>
+    <div class="content">
+        <p>管理者各位</p>
+        
+        <p>以下のユーザーからパスワードリセットの依頼がありました。</p>
+        
+        <div class="info">
+            <p><strong>ユーザー名:</strong> {{ user_name }}</p>
+            <p><strong>社員ID:</strong> {{ employee_id }}</p>
+            <p><strong>依頼理由:</strong> {{ note }}</p>
+        </div>
+        
+        <p>管理者ツールからユーザーのパスワードを再設定してください。</p>
+        
+        <div style="text-align: center;">
+            <a href="/admin/password-reset" class="button">管理者ツールを開く</a>
+        </div>
+        
+        <div class="alert">
+            <p><strong>注意:</strong> この依頼はできるだけ早く対応することをお勧めします。</p>
+            <p>対応方法:</p>
+            <ol>
+                <li>管理者ツールにログインする</li>
+                <li>「パスワードリセット依頼」メニューを選択</li>
+                <li>該当ユーザーの「パスワードリセット」ボタンをクリック</li>
+                <li>新しいパスワードを設定するか、仮パスワードを発行</li>
+                <li>設定したパスワードをユーザーに通知</li>
+            </ol>
+        </div>
+        
+        <p>ご対応よろしくお願いいたします。</p>
+    </div>
+    <div class="footer">
+        <p>このメールは自動送信されています。返信しないでください。</p>
+        <p>&copy; 2025 社内業務ツール</p>
+    </div>
+</body>
+</html>
