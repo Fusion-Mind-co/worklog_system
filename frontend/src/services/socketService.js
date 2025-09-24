@@ -6,7 +6,7 @@ import io from "socket.io-client";
 // Socket接続の状態管理
 let socket = null;
 
-const SOCKET_URL = "http://localhost:5000";
+const SOCKET_URL = "https://worklog-system.onrender.com";
 
 /**
  * Socket接続を初期化（アプリ全体で1回のみ）

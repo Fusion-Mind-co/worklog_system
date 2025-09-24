@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://worklog-system.onrender.com/api";
 
 // axiosインスタンスを作成し、他のモジュールに渡す
 const api = axios.create({
