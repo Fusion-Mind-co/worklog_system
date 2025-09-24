@@ -80,6 +80,8 @@ def create_app(config_name=None):
     
     return app, socketio
 
+# gunicorn用：モジュールレベルでappインスタンスを作成
+app, socketio = create_app()
+
 if __name__ == '__main__':
-    app, socketio = create_app()
     socketio.run(app, debug=True, host='0.0.0.0', port=5000)
