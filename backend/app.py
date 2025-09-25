@@ -39,6 +39,21 @@ def create_app(config_name=None):
     migrate.init_app(app, db)
     jwt = JWTManager(app)
     
+    # データベーステーブルの作成（本番環境で初回のみ）
+    with app.app_context():
+        try:
+            # テーブルが存在するかチェック
+            from sqlalchemy import text
+            result = db.session.execute(text("SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'users'"))
+            table_exists = result.scalar() > 0
+            
+            if not table_exists:
+                print("データベーステーブルを作成中...")
+                db.create_all()
+                print("データベーステーブルの作成が完了しました")
+        except Exception as e:
+            print(f"データベース初期化エラー: {e}")
+    
     # WebSocketの初期化
     socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet")
     # SocketIOをアプリケーションのコンテキストに保存
